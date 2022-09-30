@@ -1,0 +1,58 @@
+<div class="flex flex-row min-h-screen bg-gray-100 text-gray-800">
+   <%= render 'shared/sidebar' %>
+   <main class="main flex flex-col flex-grow -ml-64 md:ml-0 transition-all duration-150 ease-in">
+      <%= render 'shared/header' %>
+      <div class="main-content flex flex-col flex-grow p-4">
+         <h1 class="font-bold text-2xl text-gray-700">Videos</h1>
+         <%= link_to "New video", new_video_path %>
+          <div  class="grid grid-cols-12 gap-4">
+                   <div class="col-span-8">
+                    <h5 class="mb-2 text-xs font-bold tracking-tight text-gray-900 dark:text-white">Video</h5>
+                   </div> 
+                    <div class="col-span-2">
+                    <h5 class="mb-2 text-xs font-bold tracking-tight text-gray-900 dark:text-white">views</h5>
+                   </div> 
+                    <div class="col-span-2">
+                    <h5 class="mb-2 text-xs font-bold tracking-tight text-gray-900 dark:text-white">comments</h5>
+                   </div> 
+                  </div>
+         <div
+            class="bg-white"
+            >
+            <div class="container mx-auto">
+                  <p style="color: green"><%= notice %></p>
+                 
+               <div class="grid grid-cols-12 gap-4">
+                  <% @videos.each do |video| %>
+                  <div class="col-span-3">
+                  <div class="">
+                   <video id="my-video" class="video-js" controls preload="auto"   poster="<%= url_for(video.thumbnail)  %>" class="w-72" data-setup="{}">
+                        <source src="<%= url_for(video.clip) %>" type="video/mp4" width="640" height="240">
+                     </video>
+                     </div>
+                  </div>
+                    <div class="col-span-5">
+                     <div class="leading-normal">
+                        <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">  <%= video.titile %></h5>
+                        <p class="mb-3 font-normal text-gray-700 dark:text-gray-400"> <%= video.description %></p>
+                     </div>
+                    </div>
+                    <div class="col-span-2">
+                     <p>
+                     <%= video.views %>
+                  </p>
+                    </div>
+                     <div class="col-span-2">
+                        <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">10</p>
+                    </div>
+                     <%= link_to "Show this video", video %>
+                      <%= time_tag video.created_at, "data-local": "time-ago"%>
+
+                  <% end %>
+               </div>
+            </div>
+         </div>
+      </div>
+      <%= render 'shared/footer' %>
+   </main>
+</div>

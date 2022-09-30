@@ -1,0 +1,8 @@
+<div class="comment-box">
+<%= form_for([@video, @comment], remote: true) do |f| %>
+<%= f.label :content %>
+<%= f.text_area :content %>
+<%= f.submit %>
+<% end %>
+
+</div>

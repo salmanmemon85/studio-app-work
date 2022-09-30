@@ -1,0 +1,46 @@
+<%= form_with(model: video, class: "contents") do |form| %>
+<% if video.errors.any? %>
+<div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">
+   <h2><%= pluralize(video.errors.count, "error") %> prohibited this company from being saved:</h2>
+   <ul>
+      <% video.errors.each do |error| %>
+      <li><%= error.full_message %></li>
+      <% end %>
+   </ul>
+</div>
+<% end %>
+<div class="grid grid-cols-12 gap-8">
+   <div class="col-span-12">
+      <div class="mb-4">
+         <%= form.label :titile, class:'hd-sm mb-2 block leading-none'  do %>
+         title<span> <i class="fa-solid fa-circle-exclamation text-black text-xs"></i>
+         <% end %>
+         <%= form.text_field :titile, class: "form-field" %>
+      </div>
+         <div class="mb-4">
+         <%= form.label :clip, class: "hd-sm mb-2 block leading-none" do %>
+         Clip <span> <i class="fa-solid fa-circle-exclamation text-black text-xs"></i>
+         <% end %>
+         <%= form.file_field :clip, class: "form-field" %>
+      </div>
+         <div class="mb-4">
+         <%= form.label :thumbnail, class: "hd-sm mb-2 block leading-none" do %>
+         thumbnail <span> <i class="fa-solid fa-circle-exclamation text-black text-xs"></i>
+         <% end %>
+         <%= form.file_field :thumbnail, class: "form-field" %>
+      </div>
+      <div class="mb-4">
+         <%= form.label :description, class: "hd-sm mb-2 block leading-none" do %>
+         description <span> <i class="fa-solid fa-circle-exclamation text-black text-xs"></i>
+         <% end %>
+         <%= form.text_field :description, class: "form-field" %>
+      </div>
+   </div>
+</div>
+<div class="grid grid-cols-12">
+   <div class="flex">
+      <%= form.submit  class: "text-base border border-purple-200 rounded py-2 px-4 font-sarabun font-semibold text-white leading-none bg-purple-800 shadow-md" %>
+   </div>
+</div>
+</div>
+<% end %>
